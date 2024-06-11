@@ -52,6 +52,14 @@ public class homecontroller {
         list.add(map);
         return list;
     }
+    @GetMapping("/test/json3")
+    @ResponseBody
+    public Car testJson3() {
+        Car car = new Car();
+        car.setTire(4);
+        car.setModel("EV6");
+        return car;
+    }
     @Autowired JdbcTemplate jt;
     @Autowired String bean1;
     @Autowired Game game;
