@@ -22,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class homecontroller {
 
+    // html로 출력
     @GetMapping("/test/html")
     public String testHtml() {
         return "home";
@@ -32,6 +33,8 @@ public class homecontroller {
     public String testHtml2() {
         return "home";
     }
+
+    // json 출력
     @GetMapping("/test/json")
     @ResponseBody
     public Map testJson() {
@@ -60,7 +63,16 @@ public class homecontroller {
         car.setModel("EV6");
         return car;
     }
+
     @Autowired JdbcTemplate jt;
+    @GetMapping("/test/emp")
+    @ResponseBody
+    public List<Map<String, Object>> testEmp() {
+        List<Map<String, Object>> list = jt.queryForList("select * from emp");
+        return list;
+    }
+
+    @Autowired JdbcTemplate jt2;
     @Autowired String bean1;
     @Autowired Game game;
     @Autowired Bean3 bean3;
